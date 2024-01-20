@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7D6TZ7QC6Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7D6TZ7QC6Q');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>what rhymes with</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <style>
+            .table-section-header {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .table {
+            font-size: 14px;
+        }
+
+        .table td, .table th {
+            padding: .5rem;
+        }
+
+        .clickable {
+            cursor: pointer;
+            color: #007bff;
+          }
+
+        .clickable:hover {
+            color: #00008b;
+          }
+    </style>
+
+</head>
+
+<body>
+
+<div id="navbar"></div>
+{% include 'navbar.html' %}
+
+<h1>Enter a word and get the rhyme</h1>
+
+<input type="text" id="word" name="word" placeholder="Input word">
+<button id="getRhymesButton" onclick="getRhymes()" title="find perfect rhymes">Get rhymes</button>
+<button onclick="getRhymesFamily()" title="find rhymes with the same vowels and consonants of the same type (fricative, plosive, etc) and voicing (voiced or unvoiced)">Get rhymes(Advance1)</button>
+<button onclick="getRhymesPartner()" title="find rhymes with the same vowels and consonants of the same type, regardless of voicing">Get rhymes(Advance2)</button>
+<button onclick="getRhymesAdditive()" title="find rhymes with the same vowels and consonants, as well as any extra consonants">Get rhymes(Advance3)</button>
+<button onclick="getRhymesSubtractive()" title="find rhymes with the same vowels and a subset of the same consonants">Get rhymes(Advance4)</button>
+<button onclick="getRhymesSubstitution()" title="find rhymes with the same vowels and some of the same consonants, with some swapped out for other consonants">Get rhymes(Advance5)</button>
+<button onclick="getRhymesAssonance()" title="find rhymes with the same vowels and arbitrary consonants">Get rhymes(Advance6)</button>
+<button onclick="getRhymesConsonant()" title="find word that do not have the same vowels, but have the same consonants">Get rhymes(Advance7)</button>
+
+<!-- <p id="rhymes"></p> -->
+
+
+<div class="row">
+ <div class="col-md-6"> 
+    <div id="rhymes-output"></div>
+ </div> 
+  <div class="col-md-6"> 
+    
+    <div class="amounts-table col-md-6 table-left">
+                    <div class="table-section-header" style="font-weight:bolder;">
+                        Popular
+                    </div>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>what rhymes with orange</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with time</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with me</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with you</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with purple</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with day</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with love</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with life</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with month</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with up</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with world</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with back</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with heart</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with again</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with family</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with friends</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with home</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with blue</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with it</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with down</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with go</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with night</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with one</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with out</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with away</td>
+                            </tr>
+                            <tr>
+                                <td>what rhymes with do</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+</div>
+
+
+<script>
+function getRhymes() {
+    var word = document.getElementById("word").value;
+    fetch('http://localhost:5000/rhymes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({word: word}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // document.getElementById("rhymes").innerText = JSON.stringify(data);
+        displayRhymes(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+
+function getRhymesFamily() {
+    var word = document.getElementById("word").value;
+    fetch('http://localhost:5000/rhymes_family', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({word: word}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayRhymes(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+function getRhymesPartner() {
+    var word = document.getElementById("word").value;
+    fetch('http://localhost:5000/rhymes_partner', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({word: word}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayRhymes(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+function getRhymesAdditive() {
+    var word = document.getElementById("word").value;
+    fetch('http://localhost:5000/rhymes_additive', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({word: word}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayRhymes(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+function getRhymesSubtractive() {
+    var word = document.getElementById("word").value;
+    fetch('http://localhost:5000/rhymes_subtractive', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({word: word}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayRhymes(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+
+function getRhymesSubstitution() {
+    var word = document.getElementById("word").value;
+    fetch('http://localhost:5000/rhymes_substitution', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({word: word}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayRhymes(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+function getRhymesAssonance() {
+    var word = document.getElementById("word").value;
+    fetch('http://localhost:5000/rhymes_assonance', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({word: word}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayRhymes(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+function getRhymesConsonant() {
+    var word = document.getElementById("word").value;
+    fetch('http://localhost:5000/rhymes_consonant', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({word: word}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayRhymes(data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+
+function displayRhymes(data) {
+    var output = document.getElementById('rhymes-output');
+    output.innerHTML = ''; // 清空之前的结果
+
+    // 遍历每个音节数对应的押韵词数组
+    for (var syllableCount in data) {
+        var words = data[syllableCount];
+        var syllableText = syllableCount + ' syllable' + (syllableCount > 1 ? 's' : ''); // 单数或复数
+        var html = '<h3>' + syllableText + '</h3><ul>';
+
+        // 遍历押韵词并添加到列表中
+        for (var i = 0; i < words.length; i++) {
+            html += '<li>' + words[i] + '</li>';
+        }
+
+        html += '</ul>';
+        output.innerHTML += html; // 将生成的HTML添加到页面中
+    }
+}
+
+
+
+  document.querySelectorAll('.amounts-table td').forEach(function(td) {
+        td.classList.add('clickable');
+        td.addEventListener('click', function() {
+      let words = this.textContent.split(' ');
+      var lastWord = words[words.length - 1];
+      document.querySelector('#word').value = lastWord;
+      document.querySelector('#getRhymesButton').click();
+    });
+  });
+
+
+
+
+window.onload = function() {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      document.getElementById("navbar").innerHTML = xhr.responseText;
+    }
+  };
+  xhr.open("GET", "navbar.html", true);
+  xhr.send();
+};
+
+
+
+
+
+</script>
+
+</body>
+</html>
