@@ -13,7 +13,7 @@ def home():
 
 
 
-@app.route('/rhymes/', methods=['POST'])
+@app.route('/api/rhymes/', methods=['POST'])
 def get_rhymes():
     data=request.json
     print(data)
