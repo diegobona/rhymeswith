@@ -189,7 +189,7 @@ function getRhymes() {
 
 function getRhymesFamily() {
     var word = document.getElementById("word").value;
-    fetch('http://localhost:5000/rhymes_family', {
+    fetch('https://rhymeswith.vercel.app/rhymes_family/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ function getRhymesFamily() {
 
 function getRhymesPartner() {
     var word = document.getElementById("word").value;
-    fetch('http://localhost:5000/rhymes_partner', {
+    fetch('https://rhymeswith.vercel.app/rhymes_partner', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
