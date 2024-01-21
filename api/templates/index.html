@@ -169,7 +169,7 @@
 <script>
 function getRhymes() {
     var word = document.getElementById("word").value;
-    fetch('https://rhymeswith.vercel.app/rhymes', {
+    fetch('https://rhymeswith.vercel.app/api/rhymes', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ function getRhymesFamily() {
 
 function getRhymesPartner() {
     var word = document.getElementById("word").value;
-    fetch('https://rhymeswith.vercel.app/rhymes_partner', {
+    fetch('https://rhymeswith.vercel.app/rhymes_partner/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
