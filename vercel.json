@@ -1,5 +1,7 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" }
+    // { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/api/rhymes", "destination": "/api/rhymes" },
+    { "source": "/api/rhymes_family", "destination": "/api/rhymes_family" }
   ]
 }
