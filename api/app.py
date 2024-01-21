@@ -22,7 +22,7 @@ def get_rhymes():
     rhymes = ph.get_perfect_rhymes(word)
     return jsonify(rhymes)
 
-@app.route('/rhymes_family/', methods=['POST'])
+@app.route('/api/rhymes_family', methods=['POST'])
 def get_rhymes_family():
     data=request.json
     print(data)
@@ -30,7 +30,7 @@ def get_rhymes_family():
     rhymes = ph.get_family_rhymes(word)
     return jsonify(rhymes)
 
-@app.route('/rhymes_partner', methods=['POST'])
+@app.route('/api/rhymes_partner', methods=['POST'])
 def get_rhymes_partner():
     data=request.json
     print(data)
@@ -38,7 +38,7 @@ def get_rhymes_partner():
     rhymes = ph.get_partner_rhymes(word)
     return jsonify(rhymes)
 
-@app.route('/rhymes_additive', methods=['POST'])
+@app.route('/api/rhymes_additive', methods=['POST'])
 def get_rhymes_additive():
     data=request.json
     print(data)
@@ -46,7 +46,7 @@ def get_rhymes_additive():
     rhymes = ph.get_additive_rhymes(word)
     return jsonify(rhymes)
 
-@app.route('/rhymes_subtractive', methods=['POST'])
+@app.route('/api/rhymes_subtractive', methods=['POST'])
 def get_rhymes_subtractive():
     data=request.json
     print(data)
@@ -54,7 +54,7 @@ def get_rhymes_subtractive():
     rhymes = ph.get_subtractive_rhymes(word)
     return jsonify(rhymes)
 
-@app.route('/rhymes_substitution', methods=['POST'])
+@app.route('/api/rhymes_substitution', methods=['POST'])
 def get_rhymes_substitution():
     data=request.json
     print(data)
@@ -62,7 +62,7 @@ def get_rhymes_substitution():
     rhymes = ph.get_substitution_rhymes(word)
     return jsonify(rhymes)
 
-@app.route('/rhymes_assonance', methods=['POST'])
+@app.route('/api/rhymes_assonance', methods=['POST'])
 def get_rhymes_assonance():
     data=request.json
     print(data)
@@ -70,7 +70,7 @@ def get_rhymes_assonance():
     rhymes = ph.get_assonance_rhymes(word)
     return jsonify(rhymes)
 
-@app.route('/rhymes_consonant', methods=['POST'])
+@app.route('/api/rhymes_consonant', methods=['POST'])
 def get_rhymes_consonant():
     data=request.json
     print(data)

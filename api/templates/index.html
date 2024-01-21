@@ -189,7 +189,7 @@ function getRhymes() {
 
 function getRhymesFamily() {
     var word = document.getElementById("word").value;
-    fetch('https://rhymeswith.vercel.app/rhymes_family/', {
+    fetch('/api/rhymes_family', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ function getRhymesFamily() {
 
 function getRhymesPartner() {
     var word = document.getElementById("word").value;
-    fetch('https://rhymeswith.vercel.app/rhymes_partner/', {
+    fetch('/api/rhymes_partner', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -225,7 +225,7 @@ function getRhymesPartner() {
 
 function getRhymesAdditive() {
     var word = document.getElementById("word").value;
-    fetch('http://localhost:5000/rhymes_additive', {
+    fetch('/api/rhymes_additive', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -243,7 +243,7 @@ function getRhymesAdditive() {
 
 function getRhymesSubtractive() {
     var word = document.getElementById("word").value;
-    fetch('http://localhost:5000/rhymes_subtractive', {
+    fetch('/api/rhymes_subtractive', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -262,7 +262,7 @@ function getRhymesSubtractive() {
 
 function getRhymesSubstitution() {
     var word = document.getElementById("word").value;
-    fetch('http://localhost:5000/rhymes_substitution', {
+    fetch('/api/rhymes_substitution', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -280,7 +280,7 @@ function getRhymesSubstitution() {
 
 function getRhymesAssonance() {
     var word = document.getElementById("word").value;
-    fetch('http://localhost:5000/rhymes_assonance', {
+    fetch('/api/rhymes_assonance', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -298,7 +298,7 @@ function getRhymesAssonance() {
 
 function getRhymesConsonant() {
     var word = document.getElementById("word").value;
-    fetch('http://localhost:5000/rhymes_consonant', {
+    fetch('/api/rhymes_consonant', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
