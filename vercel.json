@@ -4,6 +4,6 @@
     { "src": "app.py", "use": "@vercel/python" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/rhymeswith.vercel.app" }
+    { "src": "/(.*)", "dest": "/" }
   ]
 }
