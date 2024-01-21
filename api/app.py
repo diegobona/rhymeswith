@@ -2,7 +2,7 @@
 from flask import Flask, request, jsonify,send_from_directory,render_template
 from Phyme import Phyme
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='templates')
 ph = Phyme()
 
 
@@ -13,7 +13,7 @@ def home():
 
 
 
-@app.route('/api/rhymes', methods=['POST'])
+@app.route('/rhymes/', methods=['POST'])
 def get_rhymes():
     data=request.json
     print(data)
@@ -22,7 +22,7 @@ def get_rhymes():
     rhymes = ph.get_perfect_rhymes(word)
     return jsonify(rhymes)
 
-@app.route('/api/rhymes_family', methods=['POST'])
+@app.route('/rhymes_family/', methods=['POST'])
 def get_rhymes_family():
     data=request.json
     print(data)

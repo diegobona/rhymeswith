@@ -169,7 +169,7 @@
 <script>
 function getRhymes() {
     var word = document.getElementById("word").value;
-    fetch('/api/rhymes/', {
+    fetch('/rhymes', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ function getRhymes() {
 
 function getRhymesFamily() {
     var word = document.getElementById("word").value;
-    fetch('/api/rhymes_family', {
+    fetch('/rhymes_family', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
